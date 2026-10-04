@@ -15,14 +15,19 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as PmsAppointmentsRouteImport } from './routes/_pms/appointments'
 import { Route as PmsAuditLogsRouteImport } from './routes/_pms/audit-logs'
 import { Route as PmsBranchesRouteImport } from './routes/_pms/branches'
+import { Route as PmsDashboardRouteImport } from './routes/_pms/dashboard'
 import { Route as PmsFollowupsRouteImport } from './routes/_pms/followups'
 import { Route as PmsInventoryRouteImport } from './routes/_pms/inventory'
 import { Route as PmsPaymentsRouteImport } from './routes/_pms/payments'
 import { Route as PmsPrescriptionsRouteImport } from './routes/_pms/prescriptions'
 import { Route as PmsPurchasesRouteImport } from './routes/_pms/purchases'
+import { Route as PmsQueueRouteImport } from './routes/_pms/queue'
 import { Route as PmsSuppliersRouteImport } from './routes/_pms/suppliers'
 import { Route as PmsUsersRouteImport } from './routes/_pms/users'
 import { Route as PmsConsultationsIndexRouteImport } from './routes/_pms/consultations.index'
+import { Route as PmsPatientsIndexRouteImport } from './routes/_pms/patients.index'
+import { Route as PmsPatientsIdRouteImport } from './routes/_pms/patients.$id'
+import { Route as PmsPatientsNewRouteImport } from './routes/_pms/patients.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,6 +58,11 @@ const PmsBranchesRoute = PmsBranchesRouteImport.update({
   path: '/branches',
   getParentRoute: () => PmsRoute,
 } as any)
+const PmsDashboardRoute = PmsDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => PmsRoute,
+} as any)
 const PmsFollowupsRoute = PmsFollowupsRouteImport.update({
   id: '/followups',
   path: '/followups',
@@ -78,6 +88,11 @@ const PmsPurchasesRoute = PmsPurchasesRouteImport.update({
   path: '/purchases',
   getParentRoute: () => PmsRoute,
 } as any)
+const PmsQueueRoute = PmsQueueRouteImport.update({
+  id: '/queue',
+  path: '/queue',
+  getParentRoute: () => PmsRoute,
+} as any)
 const PmsSuppliersRoute = PmsSuppliersRouteImport.update({
   id: '/suppliers',
   path: '/suppliers',
@@ -93,6 +108,21 @@ const PmsConsultationsIndexRoute = PmsConsultationsIndexRouteImport.update({
   path: '/consultations/',
   getParentRoute: () => PmsRoute,
 } as any)
+const PmsPatientsIndexRoute = PmsPatientsIndexRouteImport.update({
+  id: '/patients/',
+  path: '/patients/',
+  getParentRoute: () => PmsRoute,
+} as any)
+const PmsPatientsIdRoute = PmsPatientsIdRouteImport.update({
+  id: '/patients/$id',
+  path: '/patients/$id',
+  getParentRoute: () => PmsRoute,
+} as any)
+const PmsPatientsNewRoute = PmsPatientsNewRouteImport.update({
+  id: '/patients/new',
+  path: '/patients/new',
+  getParentRoute: () => PmsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -100,14 +130,19 @@ export interface FileRoutesByFullPath {
   '/appointments': typeof PmsAppointmentsRoute
   '/audit-logs': typeof PmsAuditLogsRoute
   '/branches': typeof PmsBranchesRoute
+  '/dashboard': typeof PmsDashboardRoute
   '/followups': typeof PmsFollowupsRoute
   '/inventory': typeof PmsInventoryRoute
   '/payments': typeof PmsPaymentsRoute
   '/prescriptions': typeof PmsPrescriptionsRoute
   '/purchases': typeof PmsPurchasesRoute
+  '/queue': typeof PmsQueueRoute
   '/suppliers': typeof PmsSuppliersRoute
   '/users': typeof PmsUsersRoute
+  '/patients/$id': typeof PmsPatientsIdRoute
+  '/patients/new': typeof PmsPatientsNewRoute
   '/consultations/': typeof PmsConsultationsIndexRoute
+  '/patients/': typeof PmsPatientsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -115,14 +150,19 @@ export interface FileRoutesByTo {
   '/appointments': typeof PmsAppointmentsRoute
   '/audit-logs': typeof PmsAuditLogsRoute
   '/branches': typeof PmsBranchesRoute
+  '/dashboard': typeof PmsDashboardRoute
   '/followups': typeof PmsFollowupsRoute
   '/inventory': typeof PmsInventoryRoute
   '/payments': typeof PmsPaymentsRoute
   '/prescriptions': typeof PmsPrescriptionsRoute
   '/purchases': typeof PmsPurchasesRoute
+  '/queue': typeof PmsQueueRoute
   '/suppliers': typeof PmsSuppliersRoute
   '/users': typeof PmsUsersRoute
+  '/patients/$id': typeof PmsPatientsIdRoute
+  '/patients/new': typeof PmsPatientsNewRoute
   '/consultations': typeof PmsConsultationsIndexRoute
+  '/patients': typeof PmsPatientsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -132,14 +172,19 @@ export interface FileRoutesById {
   '/_pms/appointments': typeof PmsAppointmentsRoute
   '/_pms/audit-logs': typeof PmsAuditLogsRoute
   '/_pms/branches': typeof PmsBranchesRoute
+  '/_pms/dashboard': typeof PmsDashboardRoute
   '/_pms/followups': typeof PmsFollowupsRoute
   '/_pms/inventory': typeof PmsInventoryRoute
   '/_pms/payments': typeof PmsPaymentsRoute
   '/_pms/prescriptions': typeof PmsPrescriptionsRoute
   '/_pms/purchases': typeof PmsPurchasesRoute
+  '/_pms/queue': typeof PmsQueueRoute
   '/_pms/suppliers': typeof PmsSuppliersRoute
   '/_pms/users': typeof PmsUsersRoute
+  '/_pms/patients/$id': typeof PmsPatientsIdRoute
+  '/_pms/patients/new': typeof PmsPatientsNewRoute
   '/_pms/consultations/': typeof PmsConsultationsIndexRoute
+  '/_pms/patients/': typeof PmsPatientsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -149,14 +194,19 @@ export interface FileRouteTypes {
     | '/appointments'
     | '/audit-logs'
     | '/branches'
+    | '/dashboard'
     | '/followups'
     | '/inventory'
     | '/payments'
     | '/prescriptions'
     | '/purchases'
+    | '/queue'
     | '/suppliers'
     | '/users'
+    | '/patients/$id'
+    | '/patients/new'
     | '/consultations/'
+    | '/patients/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -164,14 +214,19 @@ export interface FileRouteTypes {
     | '/appointments'
     | '/audit-logs'
     | '/branches'
+    | '/dashboard'
     | '/followups'
     | '/inventory'
     | '/payments'
     | '/prescriptions'
     | '/purchases'
+    | '/queue'
     | '/suppliers'
     | '/users'
+    | '/patients/$id'
+    | '/patients/new'
     | '/consultations'
+    | '/patients'
   id:
     | '__root__'
     | '/'
@@ -180,14 +235,19 @@ export interface FileRouteTypes {
     | '/_pms/appointments'
     | '/_pms/audit-logs'
     | '/_pms/branches'
+    | '/_pms/dashboard'
     | '/_pms/followups'
     | '/_pms/inventory'
     | '/_pms/payments'
     | '/_pms/prescriptions'
     | '/_pms/purchases'
+    | '/_pms/queue'
     | '/_pms/suppliers'
     | '/_pms/users'
+    | '/_pms/patients/$id'
+    | '/_pms/patients/new'
     | '/_pms/consultations/'
+    | '/_pms/patients/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -240,6 +300,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PmsBranchesRouteImport
       parentRoute: typeof PmsRoute
     }
+    '/_pms/dashboard': {
+      id: '/_pms/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof PmsDashboardRouteImport
+      parentRoute: typeof PmsRoute
+    }
     '/_pms/followups': {
       id: '/_pms/followups'
       path: '/followups'
@@ -275,6 +342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PmsPurchasesRouteImport
       parentRoute: typeof PmsRoute
     }
+    '/_pms/queue': {
+      id: '/_pms/queue'
+      path: '/queue'
+      fullPath: '/queue'
+      preLoaderRoute: typeof PmsQueueRouteImport
+      parentRoute: typeof PmsRoute
+    }
     '/_pms/suppliers': {
       id: '/_pms/suppliers'
       path: '/suppliers'
@@ -296,6 +370,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PmsConsultationsIndexRouteImport
       parentRoute: typeof PmsRoute
     }
+    '/_pms/patients/': {
+      id: '/_pms/patients/'
+      path: '/patients'
+      fullPath: '/patients/'
+      preLoaderRoute: typeof PmsPatientsIndexRouteImport
+      parentRoute: typeof PmsRoute
+    }
+    '/_pms/patients/$id': {
+      id: '/_pms/patients/$id'
+      path: '/patients/$id'
+      fullPath: '/patients/$id'
+      preLoaderRoute: typeof PmsPatientsIdRouteImport
+      parentRoute: typeof PmsRoute
+    }
+    '/_pms/patients/new': {
+      id: '/_pms/patients/new'
+      path: '/patients/new'
+      fullPath: '/patients/new'
+      preLoaderRoute: typeof PmsPatientsNewRouteImport
+      parentRoute: typeof PmsRoute
+    }
   }
 }
 
@@ -303,28 +398,38 @@ interface PmsRouteChildren {
   PmsAppointmentsRoute: typeof PmsAppointmentsRoute
   PmsAuditLogsRoute: typeof PmsAuditLogsRoute
   PmsBranchesRoute: typeof PmsBranchesRoute
+  PmsDashboardRoute: typeof PmsDashboardRoute
   PmsFollowupsRoute: typeof PmsFollowupsRoute
   PmsInventoryRoute: typeof PmsInventoryRoute
   PmsPaymentsRoute: typeof PmsPaymentsRoute
   PmsPrescriptionsRoute: typeof PmsPrescriptionsRoute
   PmsPurchasesRoute: typeof PmsPurchasesRoute
+  PmsQueueRoute: typeof PmsQueueRoute
   PmsSuppliersRoute: typeof PmsSuppliersRoute
   PmsUsersRoute: typeof PmsUsersRoute
+  PmsPatientsIdRoute: typeof PmsPatientsIdRoute
+  PmsPatientsNewRoute: typeof PmsPatientsNewRoute
   PmsConsultationsIndexRoute: typeof PmsConsultationsIndexRoute
+  PmsPatientsIndexRoute: typeof PmsPatientsIndexRoute
 }
 
 const PmsRouteChildren: PmsRouteChildren = {
   PmsAppointmentsRoute: PmsAppointmentsRoute,
   PmsAuditLogsRoute: PmsAuditLogsRoute,
   PmsBranchesRoute: PmsBranchesRoute,
+  PmsDashboardRoute: PmsDashboardRoute,
   PmsFollowupsRoute: PmsFollowupsRoute,
   PmsInventoryRoute: PmsInventoryRoute,
   PmsPaymentsRoute: PmsPaymentsRoute,
   PmsPrescriptionsRoute: PmsPrescriptionsRoute,
   PmsPurchasesRoute: PmsPurchasesRoute,
+  PmsQueueRoute: PmsQueueRoute,
   PmsSuppliersRoute: PmsSuppliersRoute,
   PmsUsersRoute: PmsUsersRoute,
+  PmsPatientsIdRoute: PmsPatientsIdRoute,
+  PmsPatientsNewRoute: PmsPatientsNewRoute,
   PmsConsultationsIndexRoute: PmsConsultationsIndexRoute,
+  PmsPatientsIndexRoute: PmsPatientsIndexRoute,
 }
 
 const PmsRouteWithChildren = PmsRoute._addFileChildren(PmsRouteChildren)
