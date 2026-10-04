@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import type { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -30,7 +31,7 @@ type F = z.infer<typeof schema>;
 function NewPatient() {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<F>({ resolver: zodResolver(schema), defaultValues: { gender: "Female" } });
-  const field = (k: keyof F, label: string, el?: JSX.Element) => (
+  const field = (k: keyof F, label: string, el?: ReactElement) => (
     <div className="space-y-1.5">
       <Label htmlFor={k}>{label}</Label>
       {el ?? <Input id={k} {...register(k)} />}
