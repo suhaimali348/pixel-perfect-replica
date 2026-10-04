@@ -3,7 +3,7 @@ import { DataPage } from "@/components/pms/DataPage";
 import { consultations, inr } from "@/lib/mock-data";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/_pms/consultations")({
+export const Route = createFileRoute("/_pms/consultations/")({
   head: seo("Consultations", "All consultation records."),
   component: ConsultationsPage,
 });
