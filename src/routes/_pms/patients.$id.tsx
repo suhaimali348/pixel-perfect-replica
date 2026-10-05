@@ -35,7 +35,7 @@ function PatientDetail() {
   return (
     <div className="space-y-6">
       <PageHeader title={p.name} subtitle={`${p.id} · ${p.age} yrs · ${p.gender} · ${p.branch}`}
-        actions={<Button asChild><Link to="/consultations"><Stethoscope className="size-4" /> Start consultation</Link></Button>} />
+        actions={<Button asChild><Link to="/case-taking"><Stethoscope className="size-4" /> Start consultation</Link></Button>} />
       <div className="grid gap-4 md:grid-cols-4">
         {[["Chief complaint", p.complaint], ["Last visit", p.lastVisit], ["Phone", p.phone], ["Status", p.status]].map(([k, v]) => (
           <div key={k} className="surface-card p-4"><div className="text-xs text-muted-foreground">{k}</div><div className="mt-1 flex items-center gap-2 font-medium">{k === "Phone" && <Phone className="size-3" />}{k === "Status" ? <StatusBadge value={v} /> : v}</div></div>
