@@ -48,8 +48,8 @@ export function DataPage<T extends Record<string, unknown>>({
   const [deleting, setDeleting] = useState<T | null>(null);
   const editPerm = createPermission?.replace(".create", ".edit") as Permission | undefined;
   const delPerm = createPermission?.replace(".create", ".delete") as Permission | undefined;
-  const canEdit = !!createPermission && can(editPerm!) || (!!createPermission && can(createPermission) && editPerm === createPermission);
-  const canDelete = !!createPermission && (can(delPerm!) || (delPerm === createPermission && can(createPermission)));
+  const canEdit = !!createPermission && (can(editPerm!) || can(createPermission));
+  const canDelete = !!createPermission && can(delPerm!);
   const showActions = canEdit || canDelete;
   const filtered = useMemo(
     () => data.filter((r) => Object.values(r).join(" ").toLowerCase().includes(q.toLowerCase())),
