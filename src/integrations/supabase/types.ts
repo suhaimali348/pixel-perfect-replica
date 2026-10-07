@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      clinic_records: {
+        Row: {
+          collection: string
+          created_at: string
+          data: Json
+          id: string
+          is_deleted: boolean
+          record_key: string
+          updated_at: string
+        }
+        Insert: {
+          collection: string
+          created_at?: string
+          data?: Json
+          id?: string
+          is_deleted?: boolean
+          record_key: string
+          updated_at?: string
+        }
+        Update: {
+          collection?: string
+          created_at?: string
+          data?: Json
+          id?: string
+          is_deleted?: boolean
+          record_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      record_history: {
+        Row: {
+          action: string
+          actor_email: string | null
+          actor_id: string | null
+          after_data: Json | null
+          before_data: Json | null
+          collection: string
+          created_at: string
+          id: string
+          record_key: string
+        }
+        Insert: {
+          action: string
+          actor_email?: string | null
+          actor_id?: string | null
+          after_data?: Json | null
+          before_data?: Json | null
+          collection: string
+          created_at?: string
+          id?: string
+          record_key: string
+        }
+        Update: {
+          action?: string
+          actor_email?: string | null
+          actor_id?: string | null
+          after_data?: Json | null
+          before_data?: Json | null
+          collection?: string
+          created_at?: string
+          id?: string
+          record_key?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791380997243,
+      "tag": "0000_clinic_records_and_history",
+      "breakpoints": true
+    }
+  ]
 }
